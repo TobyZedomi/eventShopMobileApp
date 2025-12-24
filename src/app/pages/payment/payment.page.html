@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-label class="ion-text-center">Payment for Events</ion-label>
+    <ion-list lines="none" class="ion-padding ion-margin-top">
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input type="text" label="Enter Name" labelPlacement="floating" fill="solid" placeholder="Enter Name"
+          [(ngModel)]="name" namae="name"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input type="email" label="Enter Email" labelPlacement="floating" fill="solid" placeholder="Enter Email"
+          [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-input type="number" label="Enter Amount" labelPlacement="floating" fill="solid" placeholder="Enter Amount"
+          [(ngModel)]="amount" name="amount"></ion-input>
+      </ion-item>
+      <ion-item class="button">
+        <ion-button size="medium" [disabled]="!name || !email || !amount" (click)="paymentSheet()">Pay Now</ion-button>
+          <ion-button size="medium" [routerLink]="['/events']">Go back to events</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
