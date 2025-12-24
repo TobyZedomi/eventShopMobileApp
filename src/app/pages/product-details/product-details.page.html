@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/products"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title size="large">{{ product?.title }}, Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()" #cart>
+      <div class="cart-length">{{ cartItemCount | async }}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-card *ngIf="product">
+
+    <ion-card-header>
+      <ion-card-title>
+        {{ product.title }}
+      </ion-card-title>
+
+      <ion-card-subtitle>
+        <b>Brand:</b> {{ product.brand }}<br>
+        <b>Category:</b> {{ product.category }}
+      </ion-card-subtitle>
+
+      <ion-card-content text-center>
+
+        <img
+          *ngIf="product.images?.length"
+          [src]="product.images[0]"
+          class="info-img"
+        />
+
+        <ion-item lines="none">
+          <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+          <ion-label text-wrap>{{ product.category }}</ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+          <ion-label text-wrap>{{ product.description }}</ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-icon name="cash-outline" slot="start"></ion-icon>
+          <ion-label>
+            <strong>Price: </strong> €{{ product.price }}
+          </ion-label>
+        </ion-item>
+
+        <ion-button expand="full" (click)="addToCart()">
+          Add Product to Cart
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>

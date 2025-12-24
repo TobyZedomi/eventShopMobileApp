@@ -1,0 +1,7 @@
+{
+  "name": "eventShopMobileApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

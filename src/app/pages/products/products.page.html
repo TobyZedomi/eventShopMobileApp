@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Clothing</ion-title>
+  </ion-toolbar>
+
+  <ion-button routerLink="/events">Events</ion-button>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="filterChanged()"></ion-searchbar>
+
+  <ion-item>
+    <ion-label>Select Category</ion-label>
+    <ion-select [(ngModel)]="category" (ionChange)="filterChanged()">
+      <ion-select-option value="all">All</ion-select-option>
+      <ion-select-option value="mens-shirts">Men's Shirts</ion-select-option>
+      <ion-select-option value="mens-shoes">Men's Shoes</ion-select-option>
+      <ion-select-option value="womens-dresses">Women's Dresses</ion-select-option>
+      <ion-select-option value="womens-shoes">Women's Shoes</ion-select-option>
+      <ion-select-option value="tops">Tops</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-list>
+    <ion-item
+      button
+      *ngFor="let p of filtered"
+      [routerLink]="['/products', p.id]"
+    >
+      <ion-avatar slot="start">
+        <img [src]="p.thumbnail" />
+      </ion-avatar>
+
+      <ion-label text-wrap>
+        <h3>{{ p.title }}</h3>
+        €{{ p.price }}<br />
+        {{ p.category }}
+      </ion-label>
+
+      <ion-icon slot="end" name="shirt-outline"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
