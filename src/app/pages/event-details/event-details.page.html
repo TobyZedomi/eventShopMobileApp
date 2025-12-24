@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
-   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/">
 
-        </ion-back-button>
-      </ion-buttons>
-      <ion-title size="large">{{information?.name}}, Event Ticket</ion-title>
-    </ion-toolbar>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title size="large">{{information?.name}}, Event Ticket</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -32,7 +32,7 @@
       <ion-card-content text-center>
 
         <img *ngIf="information.images?.length" [src]="information.images[0].url" class="info-img" style="width: 460px; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 10px rgba(0,0,0,0.2); display: block; margin: 20px auto; "/>
-        
+
         <ion-item lines="none">
           <ion-icon name="reorder-four" slot="start"></ion-icon>
           <ion-label text-wrap>{{information.classifications?.[0]?.segment?.name}}</ion-label>
@@ -47,14 +47,16 @@
           </ion-label>
         </ion-item>
 
-           <ion-item lines="none">
+        <ion-item lines="none">
           <ion-icon name="cash-outline" slot="start"></ion-icon>
           <ion-label>
             <strong>Price: </strong> £{{ price }}
           </ion-label>
         </ion-item>
 
-           <ion-button expand="full" (click)="addToCart()">
+        <ion-button routerLink="/products">Clothing</ion-button>
+
+        <ion-button expand="full" (click)="addToCart()">
           Purchase Event Ticket
         </ion-button>
 

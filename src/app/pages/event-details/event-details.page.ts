@@ -9,6 +9,7 @@ import { CartModalPage } from '../cart-modal/cart-modal.page';
 import { ModalController } from '@ionic/angular/standalone';
 import { Component, ViewChild, ElementRef} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,7 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './event-details.page.html',
   styleUrls: ['./event-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonIcon, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonButtons, IonBackButton, IonButton, IonFab, IonFabButton , CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonIcon, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonButtons, IonBackButton, IonButton, IonFab, IonFabButton , CommonModule, FormsModule, RouterModule]
 })
 
 
@@ -31,7 +32,7 @@ export class EventDetailsPage implements OnInit {
   @ViewChild('cart', {static: false, read: ElementRef})fab!: ElementRef;
 
 
-  
+
 
   constructor(private activatedRoute: ActivatedRoute, private eventService: Event, private cartService: Cart, private modalCtrl: ModalController) { }
 
@@ -54,7 +55,7 @@ export class EventDetailsPage implements OnInit {
 
    randomPrice() {
     return Math.floor(Math.random() * (200 - 30 + 1) +30);
-    
+
   }
 
 
@@ -94,7 +95,7 @@ export class EventDetailsPage implements OnInit {
     const node = this.fab.nativeElement;
     node.classList.add('animated', animationName)
 
-    
+
     function handleAnimationEnd() {
       if (!keepAnimated) {
         node.classList.remove('animated', animationName);
@@ -104,6 +105,6 @@ export class EventDetailsPage implements OnInit {
     node.addEventListener('animationend', handleAnimationEnd)
   }
 
- 
+
 
 }
