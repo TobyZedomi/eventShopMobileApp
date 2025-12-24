@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Event Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged()">
+
+  </ion-searchbar>
+
+
+<ion-item>
+  <ion-label>Select Event Type</ion-label>
+    <ion-select [(ngModel)]="type" (ionChange)="searchChanged()">
+    <ion-select-option value="">All</ion-select-option>
+    <ion-select-option value="music">Music</ion-select-option>
+    <ion-select-option value="sports">Sports</ion-select-option>
+    <ion-select-option value="theatre">Theatre & Arts</ion-select-option>
+    <ion-select-option value="film">Film</ion-select-option>
+    <ion-select-option value="family">Family</ion-select-option>
+    <ion-select-option value="miscellaneous">Miscellaneous</ion-select-option>
+    </ion-select>
+</ion-item>
+
+  <ion-list>
+    <ion-item button *ngFor="let item of results" [routerLink]="['/events', item.id]">
+
+
+     <ion-avatar slot="start" >
+      <img [src]="item.images[0].url" *ngIf="item.images?.length" />
+     </ion-avatar>
+
+<ion-label text-wrap>
+  <h3>{{ item.name }}</h3>
+  {{ item.dates?.start.localDate }}<br>
+  {{ item._embedded?.venues[0]?.name }}
+</ion-label>
+
+<ion-icon slot="end" *ngIf="item.classifications?.[0]?.segment?.name === 'Music'" name="musical-notes"></ion-icon>
+<ion-icon slot="end" *ngIf="item.classifications?.[0]?.segment?.name === 'Sports'" name="football"></ion-icon>
+<ion-icon slot="end" *ngIf="item.classifications?.[0]?.segment?.name === 'Arts & Theatre'" name="film-outline"></ion-icon>
+<ion-icon slot="end" *ngIf="item.classifications?.[0]?.segment?.name === 'Film'" name="videocam"></ion-icon>
+<ion-icon slot="end" *ngIf="item.classifications?.[0]?.segment?.name === 'Family'" name="people-outline"></ion-icon>
+<ion-icon slot="end" *ngIf="item.classifications?.[0]?.segment?.name === 'Miscellaneous'" name="star-outline"></ion-icon>
+
+
+    </ion-item>
+  </ion-list>
+</ion-content>
